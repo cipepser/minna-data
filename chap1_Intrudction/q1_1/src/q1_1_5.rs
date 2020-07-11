@@ -10,7 +10,7 @@ use std::{
 };
 
 #[test]
-fn q1_1_4() {
+fn q1_1_5() {
     let f = File::open("./data4.txt").unwrap();
     let f = BufReader::new(f);
 

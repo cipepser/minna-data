@@ -4,14 +4,14 @@ use std::{
         self,
         prelude::*,
         BufReader,
-        BufWriter, Write as _,
+        BufWriter,
     },
 };
 
 #[test]
 fn q1_1_1() {
     let f = File::open("./data.txt").unwrap();
-    let mut f = BufReader::new(f);
+    let f = BufReader::new(f);
 
     let stdout = io::stdout();
     let mut stdout = BufWriter::new(stdout.lock());

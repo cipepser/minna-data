@@ -5,4 +5,3 @@ authors = ["cipepser <respepic@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-proconio = { version = "0.3.6", features = ["derive"] }

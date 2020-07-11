@@ -1,36 +1,27 @@
-use proconio::{
-    input,
-    source::{
-        line::LineSource,
-        once::OnceSource,
-    },
-    marker::Bytes,
-};
 use std::{
     fs::File,
-    io::{self, BufReader, BufWriter, Write as _},
+    io::{
+        self,
+        prelude::*,
+        BufReader,
+        BufWriter, Write as _,
+    },
 };
 
 #[test]
-#[proconio::fastout]
 fn q1_1_1() {
     let f = File::open("./data.txt").unwrap();
-    let mut input_steam = BufReader::new(f);
-    let source = LineSource::new(input_steam);
+    let mut f = BufReader::new(f);
 
-    // let stdout = io::stdout();
-    // let mut stdout = BufWriter::new(stdout.lock());
+    let stdout = io::stdout();
+    let mut stdout = BufWriter::new(stdout.lock());
 
-    input! {
-        from source,
-        lines: [Bytes; 30],
+    let mut stack = vec![];
+    for line in f.lines() {
+        stack.push(line.unwrap());
     }
-    println!("{:?}", lines);
-
-    for line in lines.iter().rev() {
-        let s = String::from_utf8(line.to_vec()).unwrap();
-        println!("{}", s);
-        // writeln!(stdout, "{:?}", line).unwrap();
+    for elem in stack.iter().rev() {
+        writeln!(stdout, "{:?}", elem).unwrap();
     }
-    // stdout.flush().unwrap();
+    stdout.flush().unwrap();
 }

@@ -8,7 +8,6 @@ use std::{
         BufReader,
         BufWriter,
     },
-    fmt,
 };
 
 #[test]

@@ -20,7 +20,6 @@ fn q1_1_6() {
 
     for line in f.lines() {
         let s = line.unwrap();
-        // btreemap.get_mut(&(s.len() as u32)).unwrap_or_else(|| insert());
         btreemap.entry(s.len() as u32).or_insert_with(|| BTreeSet::new()).insert(s);
     }
 

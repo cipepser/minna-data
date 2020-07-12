@@ -2,10 +2,9 @@
 
 ## List
 
+![add](https://user-images.githubusercontent.com/10915207/87259461-6be65200-c4e6-11ea-9b13-8217ca26b369.png)
 
-!(add)[https://gyazo.com/b88dcfef16e0632a7b240a8bbb84e67f]
-
-!(add+remove)[https://gyazo.com/ec695eb6acf1bea7f292fde5874388fa]
+![add+remove](https://user-images.githubusercontent.com/10915207/87259464-6ee14280-c4e6-11ea-95e9-538035ad9fb4.png)
 
 ## USetとSSetの`find(x)`の操作性能向上について
 

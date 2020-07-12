@@ -1,0 +1,15 @@
+[package]
+name = "q1_7"
+version = "0.1.0"
+authors = ["cipepser <respepic@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+common = { path = "../common" }
+
+[dev-dependencies]
+criterion = "0.3.1"
+
+[[bench]]
+name = "bench"
+harness = false

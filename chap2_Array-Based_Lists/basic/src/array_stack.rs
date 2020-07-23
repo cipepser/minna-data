@@ -4,8 +4,8 @@ use std::iter::repeat;
 
 #[derive(Debug, Clone, Default)]
 pub struct ArrayStack<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> {
-    n: usize,
-    heap: Box<[T]>,
+    pub n: usize,
+    pub heap: Box<[T]>,
 }
 
 impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> List<T> for ArrayStack<T> {

@@ -6,3 +6,10 @@ edition = "2018"
 
 [dependencies]
 common = { path = "../../chap1_Intrudction/common" }
+
+[dev-dependencies]
+criterion = "0.3.1"
+
+[[bench]]
+name = "bench"
+harness = false

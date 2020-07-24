@@ -71,7 +71,6 @@ Benchmarking addAll benchmarks, #collection=1000/Benchmark array_stack_kai: Coll
                         time:   [6.7171 ms 6.8737 ms 7.0317 ms]
 ```
 
-
-![image](https://user-images.githubusercontent.com/10915207/88375677-f5dfc600-cdd6-11ea-9652-c42523869ee9.png)
+![image](https://user-images.githubusercontent.com/10915207/88375918-671f7900-cdd7-11ea-8d9d-243691d61a88.png)
 
 ![image](https://user-images.githubusercontent.com/10915207/88375693-fd06d400-cdd6-11ea-9f97-38ef33cc787e.png)

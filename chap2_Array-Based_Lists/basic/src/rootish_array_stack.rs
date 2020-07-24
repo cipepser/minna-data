@@ -99,7 +99,7 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> RootishArrayStack<T>
 #[cfg(test)]
 #[test]
 fn rootish_array_stack() {
-    // same situation as Fig2.1 in an ods-textbook.
+    // same situation as Fig2.5 in an ods-textbook.
     let mut a: RootishArrayStack<char> = RootishArrayStack::with_capacity(15);
     assert_eq!(a.size(), 0);
     a.add(0, 'a');

@@ -2,7 +2,7 @@ use common::traits::List;
 use std::cmp::max;
 use std::iter::repeat;
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct ArrayStack<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> {
     pub n: usize,
     pub heap: Box<[T]>,

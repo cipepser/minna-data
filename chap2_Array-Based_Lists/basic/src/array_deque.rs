@@ -2,7 +2,7 @@ use common::traits::List;
 use std::cmp::max;
 use std::iter::repeat;
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct ArrayDeque<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> {
     j: usize,
     n: usize,
@@ -67,6 +67,10 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> List<T> for ArrayDeq
 
                 let current = self.heap.get_mut((self.j + k) % self.heap.len()).unwrap();
                 *current = previous;
+
+                let previous = self.heap
+                    .get_mut((self.j + k - 1) % self.heap.len()).unwrap();
+                *previous = T::default();
             }
             self.j = (self.j + 1) % self.heap.len();
         } else {
@@ -76,6 +80,9 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> List<T> for ArrayDeq
 
                 let current = self.heap.get_mut((self.j + k) % self.heap.len()).unwrap();
                 *current = next;
+                let next = self.heap
+                    .get_mut((self.j + k + 1) % self.heap.len()).unwrap();
+                *next = T::default();
             }
         }
         self.n -= 1;
@@ -118,6 +125,7 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> ArrayDeque<T> {
             let bi = buf.get_mut(k).unwrap();
             *bi = ai.clone();
         }
+        self.j = 0;
         self.heap = buf;
     }
 }

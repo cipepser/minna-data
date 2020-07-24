@@ -1,0 +1,9 @@
+[package]
+name = "q2_2"
+version = "0.1.0"
+authors = ["cipepser <respepic@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+common = { path = "../../chap1_Intrudction/common" }
+rand = "0.7"

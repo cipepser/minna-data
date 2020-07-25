@@ -160,7 +160,6 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> ArrayDeque<T> {
 #[cfg(test)]
 #[test]
 fn array_deque_rotate() {
-    // same situation as Fig2.3 in an ods-textbook.
     let mut a: ArrayDeque<char> = ArrayDeque::with_capacity(5);
     assert_eq!(a.size(), 0);
     a.add(0, 'b');

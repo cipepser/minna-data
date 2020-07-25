@@ -126,8 +126,8 @@ fn rotate_test() {
     a.add(3, 'd');
 
     a.rotate(2);
-    a.add(2, 'b');
-    a.add(3, 'r');
-    a.add(0, 'e');
-    a.add(1, 'd');
+    assert_eq!(a.get(2), Some('b'));
+    assert_eq!(a.get(3), Some('r'));
+    assert_eq!(a.get(0), Some('e'));
+    assert_eq!(a.get(1), Some('d'));
 }

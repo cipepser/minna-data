@@ -6,8 +6,8 @@ pub trait Queue<T: Clone> {
 }
 
 pub trait Stack<T: Clone> {
-    fn add(&mut self, x: T);
-    fn remove(&mut self) -> Option<T>;
+    fn push(&mut self, x: T);
+    fn pop(&mut self) -> Option<T>;
 }
 
 pub trait Deque<T: Clone> {

@@ -26,13 +26,13 @@ pub struct SinglyLinkedList<T: Clone + PartialEq + Eq + Default + std::fmt::Debu
 
 impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> Stack<T> for SinglyLinkedList<T> {
     fn push(&mut self, x: T) {
-        let u = Node::new(x.clone());
+        let u = Node::new(x);
         if self.size() == 0 {
             self.tail = Some(u.clone());
         }
 
         if let Some(existing) = self.head.take() {
-            u.borrow_mut().next = Some(existing.clone())
+            u.borrow_mut().next = Some(existing)
         }
 
         self.n += 1;
@@ -61,7 +61,7 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> Stack<T> for SinglyL
 
 impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> Queue<T> for SinglyLinkedList<T> {
     fn add(&mut self, x: T) {
-        let u = Node::new(x.clone());
+        let u = Node::new(x);
         if self.size() == 0 {
             self.head = Some(u.clone());
         }

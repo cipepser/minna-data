@@ -92,7 +92,14 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> List<T> for DoublyLi
     }
 
     fn remove(&mut self, i: usize) -> Option<T> {
-        unimplemented!()
+        match self.get_node(i) {
+            None => None,
+            Some(w) => {
+                let x = w.borrow().x.clone();
+                self.remove_node(w);
+                Some(x)
+            }
+        }
     }
 }
 
@@ -120,7 +127,6 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> DoublyLinkedList<T> 
         } else {
             p = Some(self.dummy.clone());
             for _ in (i + 1..self.size() + 1).rev() {
-                // println!("ccc");
                 p = p.take().unwrap().borrow_mut()
                     .prev.as_ref()
                     .map(|link| link.upgrade().unwrap().clone());
@@ -134,12 +140,20 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> DoublyLinkedList<T> 
 
         u.borrow_mut().prev = w.borrow().prev.clone();
         u.borrow_mut().next = Some(w.clone());
-        u.borrow_mut().next.as_ref().unwrap()
+        u.borrow().next.as_ref().unwrap()
             .borrow_mut().prev = Some(Rc::downgrade(&u));
-        u.borrow_mut().prev.as_ref().unwrap()
+        u.borrow().prev.as_ref().unwrap()
             .upgrade().unwrap().borrow_mut().next = Some(u.clone());
 
         self.n += 1;
+    }
+
+    pub fn remove_node(&mut self, w: Link<T>) {
+        w.borrow().prev.as_ref().unwrap()
+            .upgrade().unwrap().borrow_mut().next = w.borrow().next.clone();
+        w.borrow().next.as_ref().unwrap()
+            .borrow_mut().prev = w.borrow().prev.clone();
+        self.n -= 1;
     }
 }
 
@@ -165,4 +179,9 @@ fn doubly_linked_list() {
     assert_eq!(l.get(0), Some('x'));
     assert_eq!(l.get(1), Some('a'));
     assert_eq!(l.get(2), Some('b'));
+
+    assert_eq!(l.remove(0), Some('x'));
+    assert_eq!(l.size(), 2);
+    assert_eq!(l.get(0), Some('a'));
+    assert_eq!(l.get(1), Some('b'));
 }

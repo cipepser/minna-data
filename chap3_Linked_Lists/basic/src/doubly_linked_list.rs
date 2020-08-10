@@ -38,7 +38,6 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> Debug for Node<T> {
                 };
             }
         }
-
         write!(f, " }}")
     }
 }
@@ -59,13 +58,6 @@ pub struct DoublyLinkedList<T: Clone + PartialEq + Eq + Default + std::fmt::Debu
     n: usize,
     dummy: Link<T>,
 }
-
-// impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> Drop for DoublyLinkedList<T> {
-//     fn drop(&mut self) {
-//         // while self.remove(0).is_some() {}
-//         unimplemented!()
-//     }
-// }
 
 impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> List<T> for DoublyLinkedList<T> {
     fn size(&self) -> usize { self.n }

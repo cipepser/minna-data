@@ -108,30 +108,30 @@ impl<T: Clone + PartialEq + Eq + Default + std::fmt::Debug> DoublyLinkedList<T> 
     }
 
     pub fn get_node(&self, i: usize) -> Option<Link<T>> {
-        let mut p: Option<Link<T>> = None;
         if i < self.size() / 2 {
-            p = self.dummy.borrow().next.clone();
+            let mut p = self.dummy.borrow().next.clone();
             for _ in 0..i {
                 p = p.take().unwrap().borrow_mut()
                     .next.as_ref()
-                    .map(|link| link.clone());
+                    .cloned();
             }
+            p
         } else {
-            p = Some(self.dummy.clone());
+            let mut p = Some(self.dummy.clone());
             for _ in (i + 1..self.size() + 1).rev() {
                 p = p.take().unwrap().borrow_mut()
                     .prev.as_ref()
-                    .map(|link| link.upgrade().unwrap().clone());
+                    .map(|link| link.upgrade().unwrap());
             }
+            p
         }
-        p
     }
 
     pub fn add_before(&mut self, w: Link<T>, x: T) {
         let u = Node::new(x);
 
         u.borrow_mut().prev = w.borrow().prev.clone();
-        u.borrow_mut().next = Some(w.clone());
+        u.borrow_mut().next = Some(w);
         u.borrow().next.as_ref().unwrap()
             .borrow_mut().prev = Some(Rc::downgrade(&u));
         u.borrow().prev.as_ref().unwrap()

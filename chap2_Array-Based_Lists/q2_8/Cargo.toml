@@ -1,9 +1,9 @@
 [package]
-name = "chap3-basic"
+name = "q2_8"
 version = "0.1.0"
 authors = ["cipepser <respepic@gmail.com>"]
 edition = "2018"
 
 [dependencies]
 common = { path = "../../chap1_Intrudction/common" }
-array_based_lists = { package = "basic", path = "../../chap2_Array-Based_Lists/basic" }
+basic = { path = "../basic"}
